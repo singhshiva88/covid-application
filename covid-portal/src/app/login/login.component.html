@@ -1,0 +1,140 @@
+<title>Welcome to Covid Dashboard Application</title>
+<nav class="navbar navbar-default navbar-expand-lg navbar-light" style="background-color: #222">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#"><b>Wander - Dashboard</b></a>
+    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+      <span class="navbar-toggler-icon"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+  <!-- Collection of nav links, forms, and other content for toggling -->
+  <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+    <ul class="nav navbar-nav">
+      <li class="nav-item" style="cursor: pointer;"><a (click)="setActiveTab('Home')" class="nav-link">Home</a></li>
+      <li class="nav-item" style="cursor: pointer;"><a (click)="setActiveTab('About')" class="nav-link">About</a></li>
+      <li class="nav-item" style="cursor: pointer;" *ngIf="isAuthenticated"><a (click)="setActiveTab('Covid')" class="nav-link">Covid Stats</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right ml-auto">
+      <li class="nav-item" style="cursor: pointer;"><a class="nav-link"></a></li>
+      <li class="nav-item" style="cursor: pointer;" *ngIf="isAuthenticated"><a (click)="logout()" class="nav-link">Logout</a></li>
+      <li class="nav-item dropdown" *ngIf="!isAuthenticated">
+        <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#"><i class="fa fa-user-o"></i> Login</a>
+        <ul class="dropdown-menu">
+          <li>
+            <form class="form-inline login-form">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" name="username" [(ngModel)]="request.username" class="form-control" placeholder="Username" required>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input name="password" type="text" [(ngModel)]="request.password" class="form-control" placeholder="Password" required>
+              </div>
+              <button type="submit" (click)="getAccessToken()" class="btn btn-primary">Login</button>
+            </form>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown" *ngIf="!isAuthenticated">
+        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign up</a>
+        <ul class="dropdown-menu form-wrapper">
+          <li>
+            <form>
+              <p class="hint-text" style="font-size: large;text-align: center;">Sign up to see </p>
+              <div class="form-group">
+                <input type="text"
+                       [(ngModel)]="userModel.firstName"
+                       class="form-control" placeholder="First Name" required="required">
+              </div>
+              <div class="form-group">
+                <input type="text"
+                       [(ngModel)]="userModel.lastName"
+                       class="form-control" placeholder="Last Name" required="required">
+              </div>
+              <div class="form-group">
+                <input type="text"
+                       [(ngModel)]="userModel.username"
+                       class="form-control" placeholder="Username" required="required">
+              </div>
+              <div class="form-group">
+                <input type="password"
+                       [(ngModel)]="userModel.password"
+                       class="form-control" placeholder="Password" required="required">
+              </div>
+              <div class="form-group">
+                <input type="password"
+                       [(ngModel)]="userModel.password"
+                       class="form-control" placeholder="Confirm Password" required="required">
+              </div>
+              <div class="form-group">
+                <label class="checkbox-inline">
+                  <input type="checkbox"
+                         name="acceptTerms"
+                         [checked]="acceptTerms"
+                         (click)="acceptTerms = !acceptTerms"
+                         [(ngModel)]="acceptTerms"
+                         required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+              </div>
+              <input type="submit" name="signupSubmit" [disabled]="!acceptTerms"
+                     class="btn btn-primary btn-block" value="Sign up"
+              (click)="signUp()">
+            </form>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid mt-5">
+  <div class="row" *ngIf="activeNavLink === 'Home'">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <p style="font-size: large;">
+        Coronavirus disease 2019 (COVID-19) is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).[9] It was
+        first identified in December 2019 in Wuhan, China, and has resulted in an ongoing pandemic.[10][11] The first case may be traced back to 17
+        November 2019.[12] As of 14 June 2020, more than 7.81 million cases have been reported across 188 countries and territories, resulting in more
+        than 430,000 deaths. More than 3.72 million people have recovered.[8]
+
+        Common symptoms include fever, cough, fatigue, shortness of breath, and loss of smell and taste.[5][6][13] While the majority of cases result
+        in mild symptoms, some progress to acute respiratory distress syndrome (ARDS) possibly precipitated by cytokine storm,[14] multi-organ
+        failure, septic shock, and blood clots.[15][16][17] The time from exposure to onset of symptoms is typically around five days, but may range
+        from two to fourteen days.
+      </p>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row" *ngIf="activeNavLink === 'About'">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <p style="font-size: large;">
+        <br>BUILD A COVID-19 WEB DASHBOARD WITH A JAVA BACKEND<br/>
+        User Functions <br/>
+        ● A user can register an account<br/>
+        ● A user can login<br/>
+        ● An authenticated user can view a COVID-19 dashboard for India. <br/>The
+        dashboard can include anything you feel is useful - eg total cases,
+        active cases, deaths, graphs etc. <br/>These examples are not prescriptive.
+        Be bold, be creative and build something awesome.<br/>
+        Main Frameworks<br/>
+        ● Spring 4 and above or Spring Boot
+        Infrastructure<br/>
+        ● Application Server - any<br/>
+        ● DB - any<br/>
+        ● Hosting - any<br/>
+        Deliverables<br/>
+        ● Source code<br/>
+        ● Public working url of the webapp<br/>
+        ● Tests - unit and integration tests. you may also choose to use a ci
+      </p>
+
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row" *ngIf="activeNavLink === 'Covid'">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"></div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
