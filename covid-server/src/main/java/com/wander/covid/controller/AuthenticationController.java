@@ -24,7 +24,7 @@ public class AuthenticationController
   private JwtUtil jwtTokenUtil;
 
   @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-  public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest authenticationRequest) throws Exception
+  public ResponseEntity<String> authenticate(@RequestBody AuthenticationRequest authenticationRequest) throws Exception
   {
     try
     {
@@ -38,6 +38,6 @@ public class AuthenticationController
     }
     final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());
     final String jwtToken = jwtTokenUtil.generateToken(userDetails);
-    return ResponseEntity.ok(new AuthenticationResponse(jwtToken));
+    return ResponseEntity.ok(jwtToken);
   }
 }

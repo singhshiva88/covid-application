@@ -1,0 +1,28 @@
+::ng-deep .sub-region-table .ui-datatable-scrollable-view .ui-datatable-scrollable-body {
+  min-height: 27vh;
+}
+::ng-deep .ui-table-caption.ui-widget-header.ng-star-inserted {
+  background-color: transparent;
+}
+
+::ng-deep .ui-table-wrapper table .ui-table-thead tr th {
+  background-color: transparent;
+}
+
+::ng-deep .ui-table-wrapper table .ui-table-tbody tr {
+  background-color: transparent;
+}
+::ng-deep body .ui-table .ui-table-tbody > tr:nth-child(even) {
+  background-color: transparent;
+}
+::ng-deep .ui-table-wrapper table .ui-table-tbody tr td{
+}
+
+::ng-deep .pTableClickabeRow {
+  font-size: small;
+  background-color: unset;
+  text-decoration: underline;
+  border: none;
+  text-align: left;
+  color: black;
+}

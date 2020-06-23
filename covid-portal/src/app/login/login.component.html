@@ -23,6 +23,7 @@
         <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#"><i class="fa fa-user-o"></i> Login</a>
         <ul class="dropdown-menu">
           <li>
+            <div *ngIf="loginErrorString.length > 0" style="color: red"> {{loginErrorString}}</div>
             <form class="form-inline login-form">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -32,12 +33,13 @@
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                 <input name="password" type="text" [(ngModel)]="request.password" class="form-control" placeholder="Password" required>
               </div>
-              <button type="submit" (click)="getAccessToken()" class="btn btn-primary">Login</button>
+              <button type="submit" (click)="login()" class="btn btn-primary">Login</button>
             </form>
           </li>
         </ul>
       </li>
       <li class="nav-item dropdown" *ngIf="!isAuthenticated">
+        <div *ngIf="signupError.length > 0"> {{signupError}}</div>
         <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign up</a>
         <ul class="dropdown-menu form-wrapper">
           <li>
@@ -45,26 +47,31 @@
               <p class="hint-text" style="font-size: large;text-align: center;">Sign up to see </p>
               <div class="form-group">
                 <input type="text"
+                       name="firstName"
                        [(ngModel)]="userModel.firstName"
                        class="form-control" placeholder="First Name" required="required">
               </div>
               <div class="form-group">
                 <input type="text"
+                       name="lastName"
                        [(ngModel)]="userModel.lastName"
                        class="form-control" placeholder="Last Name" required="required">
               </div>
               <div class="form-group">
                 <input type="text"
+                       name="userName"
                        [(ngModel)]="userModel.username"
                        class="form-control" placeholder="Username" required="required">
               </div>
               <div class="form-group">
                 <input type="password"
+                       name="password"
                        [(ngModel)]="userModel.password"
                        class="form-control" placeholder="Password" required="required">
               </div>
               <div class="form-group">
                 <input type="password"
+                       name="password"
                        [(ngModel)]="userModel.password"
                        class="form-control" placeholder="Confirm Password" required="required">
               </div>
@@ -79,7 +86,7 @@
               </div>
               <input type="submit" name="signupSubmit" [disabled]="!acceptTerms"
                      class="btn btn-primary btn-block" value="Sign up"
-              (click)="signUp()">
+                     (click)="signUp()">
             </form>
           </li>
         </ul>
@@ -87,21 +94,21 @@
     </ul>
   </div>
 </nav>
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5 navBarContent">
   <div class="row" *ngIf="activeNavLink === 'Home'">
     <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <p style="font-size: large;">
-        Coronavirus disease 2019 (COVID-19) is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).[9] It was
-        first identified in December 2019 in Wuhan, China, and has resulted in an ongoing pandemic.[10][11] The first case may be traced back to 17
-        November 2019.[12] As of 14 June 2020, more than 7.81 million cases have been reported across 188 countries and territories, resulting in more
-        than 430,000 deaths. More than 3.72 million people have recovered.[8]
-
-        Common symptoms include fever, cough, fatigue, shortness of breath, and loss of smell and taste.[5][6][13] While the majority of cases result
-        in mild symptoms, some progress to acute respiratory distress syndrome (ARDS) possibly precipitated by cytokine storm,[14] multi-organ
-        failure, septic shock, and blood clots.[15][16][17] The time from exposure to onset of symptoms is typically around five days, but may range
-        from two to fourteen days.
+    <div class="col-md-6 mt-5">
+      <p _ngcontent-dwv-c1="" style="font-size: large;"> Coronavirus disease 2019 (COVID-19) is an infectious disease
+        caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).[9] It was first identified in December 2019
+        in Wuhan, China, and has resulted in an ongoing pandemic.[10][11] The first case may be traced back to 17 November 2019.
+        [12] As of 14 June 2020, more than 7.81 million cases have been reported across 188 countries and territories, resulting
+        in more than 430,000 deaths. More than 3.72 million people have recovered.[8] Common symptoms include fever, cough, fatigue,
+        shortness of breath, and loss of smell and taste.[5][6][13] While the majority of cases result in mild symptoms, some
+        progress to acute respiratory distress syndrome (ARDS) possibly precipitated by cytokine storm,[14] multi-organ failure,
+        septic shock, and blood clots.[15][16][17] The time from exposure to onset of symptoms is typically around five days, but may
+        range from two to fourteen days.
       </p>
+      <p><b>[Signup or Login to see Covid 19 Detailed Statistics for India and all its states and districts]</b></p>
     </div>
     <div class="col-md-3"></div>
   </div>
@@ -133,8 +140,12 @@
     <div class="col-md-3"></div>
   </div>
   <div class="row" *ngIf="activeNavLink === 'Covid'">
-    <div class="col-md-3"></div>
-    <div class="col-md-6"></div>
-    <div class="col-md-3"></div>
+    <div class="col-md-12">
+      <app-covid-home
+        [regionName]="'India'"
+        [parentRegion]="''"
+        [regionType]="'COUNTRY'"
+      ></app-covid-home>
+    </div>
   </div>
 </div>

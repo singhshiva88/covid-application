@@ -34,10 +34,11 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
   protected void configure(HttpSecurity httpSecurity) throws Exception
   {
     httpSecurity.cors().disable();
-    httpSecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate", "/signup", "/load", "/h2-console")
+    httpSecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate", "/signup", "/load", "/h2-console/**")
             .permitAll().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+    httpSecurity.headers().frameOptions().sameOrigin();
   }
 
   @Bean

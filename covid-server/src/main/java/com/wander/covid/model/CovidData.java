@@ -1,16 +1,42 @@
 package com.wander.covid.model;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
-public class CovidData
+@Entity
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
+public class CovidData implements Serializable
 {
+  @Id
+  @GeneratedValue( strategy = GenerationType.AUTO )
+  private int id;
   private Date date;
-  private String location;
-  private String parentLocation;
-  private RegionType regionType;
+  private int active;
   private int confirmed;
   private int deceased;
   private int recovered;
+  private int tested;
+
+  public int getActive()
+  {
+    return active;
+  }
+
+  public void setActive(int active)
+  {
+    this.active = active;
+  }
+
+  public int getId()
+  {
+    return id;
+  }
+
+  public void setId(int id)
+  {
+    this.id = id;
+  }
 
   public Date getDate()
   {
@@ -20,26 +46,6 @@ public class CovidData
   public void setDate(Date date)
   {
     this.date = date;
-  }
-
-  public String getLocation()
-  {
-    return location;
-  }
-
-  public void setLocation(String location)
-  {
-    this.location = location;
-  }
-
-  public String getParentLocation()
-  {
-    return parentLocation;
-  }
-
-  public void setParentLocation(String parentLocation)
-  {
-    this.parentLocation = parentLocation;
   }
 
   public int getConfirmed()
@@ -70,5 +76,15 @@ public class CovidData
   public void setRecovered(int recovered)
   {
     this.recovered = recovered;
+  }
+
+  public int getTested()
+  {
+    return tested;
+  }
+
+  public void setTested(int tested)
+  {
+    this.tested = tested;
   }
 }

@@ -1,9 +1,12 @@
 package com.wander.covid.service.impl;
 
+import com.wander.covid.downloader.impl.Covid19indiaDownloader;
 import com.wander.covid.model.User;
 import com.wander.covid.repository.RoleRepository;
 import com.wander.covid.repository.UserRepository;
 import com.wander.covid.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
@@ -13,11 +16,11 @@ import java.util.ArrayList;
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService
 {
-  @Autowired
-  private UserRepository userRepository;
+
+  Logger LOG = LoggerFactory.getLogger(Covid19indiaDownloader.class);
 
   @Autowired
-  private RoleRepository roleRepository;
+  private UserRepository userRepository;
 
   @Override
   public User findByUsername(String username)
@@ -28,10 +31,13 @@ public class UserServiceImpl implements UserService, UserDetailsService
   @Override
   public void saveUser(User user)
   {
-    if (findByUsername(user.getUsername()) == null) {
+    if (findByUsername(user.getUsername()) == null)
+    {
       userRepository.save(user);
-    } else {
-      System.out.println("User Already extsts................................");
+    }
+    else
+    {
+      LOG.error("User Already extsts................................");
     }
   }
 

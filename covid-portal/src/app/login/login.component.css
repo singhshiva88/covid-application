@@ -19,6 +19,10 @@ body{
   padding-right: 16px;
   border-bottom: 1px solid #dfe3e8;
   border-radius: 0;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 9;
 }
 .navbar .navbar-brand {
   font-size: 20px;
@@ -117,4 +121,8 @@ body{
   .navbar .login-form .btn {
     width: 100%;
   }
+}
+
+.navBarContent {
+  background-color: azure;
 }
