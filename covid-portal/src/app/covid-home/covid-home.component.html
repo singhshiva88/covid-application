@@ -1,0 +1,182 @@
+<div class="row">
+  <div class="col-md-12 mt-4">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-12 d-inline-flex justify-content-center">
+            <p-table
+              #tt
+              class="sub-region-table"
+              [value]="subRegions"
+              [responsive]="true"
+              sortMode="multiple"
+              [globalFilterFields]="['regionName']"
+            >
+              <ng-template pTemplate="caption">
+                <div class="row">
+                  <div class="col-md-4 d-flex justify-content-lg-start">
+                    <button type="button"
+                            [title]="'Click here to see National level stats'"
+                            (click)="refreshDashBoardWithNewData('India', 'COUNTRY', ''); tt.filterGlobal('', 'contains')"
+                            class="btn btn-primary btn-sm" style="cursor: pointer; text-decoration: underline">India
+                    </button>
+                    <button type="button"
+                            [title]="'Click here to see details'"
+                            (click)="refreshDashBoardWithNewData(parentRegion, 'STATE', ''); tt.filterGlobal('', 'contains')"
+                            [hidden]="regionType !== 'DISTRICT'"
+                            class="btn btn-primary btn-sm ml-2" style="cursor: pointer; text-decoration: underline">{{parentRegion}}</button>
+                  </div>
+                  <div class="col-md-8 d-flex justify-content-around">
+                    <input type="text" pInputText size="50" placeholder="Search"
+                           [(ngModel)]="filterString"
+                           (ngModelChange)="tt.filterGlobal(filterString, 'contains')"
+                           style="border-radius: 8px;">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mt-4">
+                    <h4>Regions of <b>{{regionName}}</b></h4>(click to view details)
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Name</th>
+                  <th>Confirmed</th>
+                  <th>Active</th>
+                  <th>Recovered</th>
+                  <th>Deceased</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-region>
+                <tr>
+                  <td>
+                    <button type="button"
+                            [title]="'Click here to see detailed statistics'"
+                            (click)="refreshDashBoardWithNewData(region.regionName, region.regionType, region.parentRegion); tt.filterGlobal('', 'contains')"
+                            class="btn btn-secondary btn-sm pTableClickabeRow"
+                    >{{region.regionName}}</button>
+                  </td>
+                  <td>{{region.confirmed}}</td>
+                  <td>{{region.active}}</td>
+                  <td>{{region.recovered}}</td>
+                  <td>{{region.deceased}}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-12 mt-4  d-inline-flex justify-content-center" style="align-content: center">
+            <h3>Current status of Covid19 in <b>{{regionName}}</b></h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 d-inline-flex justify-content-center">
+            <ngx-charts-number-card
+              *ngIf="numberCardList"
+              [view]="[700, 150]"
+              [scheme]="colorScheme"
+              [results]="numberCardList"
+              [cardColor]="cardColor"
+            >
+            </ngx-charts-number-card>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12  d-inline-flex justify-content-center" style="align-content: center">
+            <h4>Date wise case fluctuation</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 d-inline-flex justify-content-center">
+            <ngx-charts-line-chart
+              *ngIf="cumulativeData"
+              [view]="[700, 300]"
+              [scheme]="colorScheme"
+              [results]="cumulativeData"
+              [gradient]="false"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [yAxisLabel]="'Cases'"
+              [legendTitle]="'Category'"
+              [timeline]="true"
+            ></ngx-charts-line-chart>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 d-inline-flex justify-content-center">
+            <ngx-charts-bar-vertical-stacked
+              *ngIf="allChildRegions"
+              [scheme]="colorSchemeLineChart"
+              [view]="[700, 400]"
+              [results]="allChildRegions"
+              [showDataLabel]="true"
+              [legend]="true"
+              [legendTitle]="'Status'"
+              [gradient]="true"
+              [yAxis]="true"
+              [xAxis]="true"
+              [yAxisLabel]="'All Regions'"
+              [showYAxisLabel]="true"
+              [showXAxisLabel]="true"
+              [maxXAxisTickLength]="300"
+            ></ngx-charts-bar-vertical-stacked>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12  d-inline-flex justify-content-center" style="align-content: center">
+            <h4>Regions by percentage</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 d-inline-flex justify-content-center">
+            <ngx-charts-pie-grid
+              [results]="topHitRegions"
+              [view]="[800, 1200]"
+            >
+            </ngx-charts-pie-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> wander.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
