@@ -14,6 +14,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.*;
+
+import java.util.Arrays;
 
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter
@@ -33,7 +36,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception
   {
-    httpSecurity.cors().disable();
+    httpSecurity.cors().configurationSource(corsConfigurationSource());
     httpSecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate", "/signup", "/load", "/h2-console/**")
             .permitAll().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -52,5 +55,19 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
   public AuthenticationManager authenticationManagerBean() throws Exception
   {
     return super.authenticationManagerBean();
+  }
+  @Bean
+  CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration configuration = new CorsConfiguration();
+    configuration.setAllowedOrigins(Arrays.asList("*"));
+    configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+    configuration.setAllowCredentials(true);
+    //the below three lines will add the relevant CORS response headers
+    configuration.addAllowedOrigin("*");
+    configuration.addAllowedHeader("*");
+    configuration.addAllowedMethod("*");
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", configuration);
+    return source;
   }
 }

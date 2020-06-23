@@ -11,7 +11,7 @@ import {Table} from 'primeng/table';
   styleUrls: ['./covid-home.component.css']
 })
 export class CovidHomeComponent implements OnInit {
-  @ViewChild('tt', { static: false }) public table: Table;
+  @ViewChild('tt', {static: false}) public table: Table;
 
   @Input() regionName: string;
   @Input() parentRegion: string;
@@ -54,6 +54,7 @@ export class CovidHomeComponent implements OnInit {
     this.loadCumulativeData(this.regionName, this.regionType);
     this.showAllChildRegionTypes(this.regionName, this.regionType, this.parentRegion);
   }
+
 
   private showAllChildRegionTypes(name, regionType, parentRegion) {
     const resp = this.service.getAggregatedDataSubRegion(this.tokenString, name, regionType);

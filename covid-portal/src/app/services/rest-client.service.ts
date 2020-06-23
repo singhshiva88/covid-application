@@ -18,7 +18,14 @@ export class RestClientService {
   CUMULATIVE_DATA_COUNTRY_URL = 'http://localhost:8080/country/cumulative';
   CUMULATIVE_DATA_STATE_URL = 'http://localhost:8080/state/cumulative/';
   CUMULATIVE_DATA_DISTRICT_URL = 'http://localhost:8080/district/cumulative/';
+  GET_USERNAME_URL = 'http://localhost:8080/get/name';
   constructor(private http: HttpClient) {
+  }
+
+  public getUserName(token) {
+    const tokenStr = this.getAuthprizationHeaderString(token);
+    const headers = new HttpHeaders().set('Authorization', tokenStr);
+    return this.http.get(this.GET_USERNAME_URL, {headers, responseType: 'text' as 'json'});
   }
 
   public generateToken(request: LoginRequestModel) {
@@ -26,7 +33,7 @@ export class RestClientService {
   }
 
   public checkAuthentication(token) {
-    const tokenStr = 'Bearer ' + token;
+    const tokenStr = this.getAuthprizationHeaderString(token);
     const headers = new HttpHeaders().set('Authorization', tokenStr);
     return this.http.get(this.CHECK_AUTHENTICATION_URL, {headers, responseType: 'text' as 'json'});
   }

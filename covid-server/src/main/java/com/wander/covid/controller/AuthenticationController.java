@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class AuthenticationController
   private JwtUtil jwtTokenUtil;
 
   @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-  public ResponseEntity<String> authenticate(@RequestBody AuthenticationRequest authenticationRequest) throws Exception
+  public ResponseEntity<String> authenticate(@RequestBody AuthenticationRequest authenticationRequest)
   {
     try
     {

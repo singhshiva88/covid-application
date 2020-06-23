@@ -17,11 +17,11 @@ export class LoginComponent implements OnInit {
   isAuthenticated: boolean;
   activeNavLink = ConstantsModel.HOME_TAB;
   acceptTerms = false;
+  userName: string;
 
   // Success and Error messages
-  private successSignUpMsg: string;
-  private signupError: string;
-  private loginErrorString: string;
+  private signupError = '';
+  private loginErrorString = '';
 
   constructor(private service: RestClientService, private cookie: AppCookieService) {
   }
@@ -35,12 +35,14 @@ export class LoginComponent implements OnInit {
           this.cookie.set(ConstantsModel.SECTRET_KEY, this.tokenString);
           this.activeNavLink = ConstantsModel.COVID_TAB;
           this.isAuthenticated = true;
+          this.setUserName();
         },
         err => {
           this.tokenString = undefined;
           this.cookie.remove(ConstantsModel.SECTRET_KEY);
           this.activeNavLink = ConstantsModel.HOME_TAB;
           this.isAuthenticated = false;
+          this.userName = '';
         });
     }
   }
@@ -58,7 +60,8 @@ export class LoginComponent implements OnInit {
       this.activeNavLink = ConstantsModel.COVID_TAB;
       this.isAuthenticated = true;
       this.loginErrorString = '';
-    },
+      this.setUserName();
+      },
       error1 => {
       this.loginErrorString = 'Invalid username or password';
       });
@@ -67,7 +70,10 @@ export class LoginComponent implements OnInit {
   signUp() {
     const resp = this.service.signUp(this.userModel);
     resp.subscribe(data => {
-        this.successSignUpMsg = 'Sign Up Complete'
+        this.signupError = '';
+        this.request.username = this.userModel.username;
+        this.request.password = this.userModel.password;
+        this.login();
     },
       error1 => {
         this.signupError = 'A user with this name already exists';
@@ -75,8 +81,19 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
+    this.cookie.remove(ConstantsModel.SECTRET_KEY);
     this.tokenString = undefined;
     this.isAuthenticated = false;
     this.activeNavLink = ConstantsModel.HOME_TAB;
+    this.userName = '';
+  }
+
+  setUserName() {
+    if (this.tokenString) {
+      const resp = this.service.getUserName(this.tokenString);
+      resp.subscribe(data => {
+        this.userName = data.toString();
+      });
+    }
   }
 }
