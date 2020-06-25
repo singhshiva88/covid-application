@@ -19,16 +19,16 @@ export class CovidHomeComponent implements OnInit {
   private tokenString: string;
 
   // Data to display in UI - Aggregated Numbers Card
-  private numberCardList: any [];
+  numberCardList: any [];
 
   // Data to display all the child entities - List of states or districts
-  private allChildRegions: any [];
+  allChildRegions: any [];
 
   // Data to display all the child entities in total percentage - List of states or districts
-  private topHitRegions: any [];
+  topHitRegions: any [];
 
   // Detailed date wise data for country/state/district - Line chart
-  private cumulativeData: any[];
+  cumulativeData: any[];
 
   colorScheme = {
     domain: ['#9400D3', '#E44D25', '#006400', '#890202']

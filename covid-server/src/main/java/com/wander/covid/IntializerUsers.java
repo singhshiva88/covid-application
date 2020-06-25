@@ -15,12 +15,7 @@ public class IntializerUsers
 
   @PostConstruct
   public void initialize() {
-    userService.saveUser(new User("firstname1", "lastname1", "username1@gmail.com", "password1"));
-    userService.saveUser(new User("firstname2", "lastname2", "username2@gmail.com", "password2"));
-    userService.saveUser(new User("firstname3", "lastname3", "username3@gmail.com", "password3"));
-    userService.saveUser(new User("firstname4", "lastname4", "username4@gmail.com", "password4"));
-    userService.saveUser(new User("firstname5", "lastname5", "username5@gmail.com", "password5"));
-    userService.saveUser(new User("firstname6", "lastname6", "username6@gmail.com", "password6"));
-
+    userService.saveUser(new User("firstname1", "lastname1", "user1", "pass1"));
+    userService.saveUser(new User("firstname2", "lastname2", "user2", "pass2"));
   }
 }

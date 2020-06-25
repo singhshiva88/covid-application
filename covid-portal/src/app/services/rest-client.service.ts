@@ -8,17 +8,19 @@ import {ConstantsModel} from '../util/constants-model';
   providedIn: 'root'
 })
 export class RestClientService {
-
-  AUTHENTICATION_URL = 'http://localhost:8080/authenticate';
-  SIGNUP_URL = 'http://localhost:8080/signup';
-  CHECK_AUTHENTICATION_URL = 'http://localhost:8080/checkAuthentication';
-  AGGREGATED_DATA_ENTITY_URL = 'http://localhost:8080/region_name/';
-  AGGREGATED_DATA_ALL_STATES_URL = 'http://localhost:8080/region_type/state';
-  AGGREGATED_DATA_ALL_DISTRICTS_URL = 'http://localhost:8080/region_type/';
-  CUMULATIVE_DATA_COUNTRY_URL = 'http://localhost:8080/country/cumulative';
-  CUMULATIVE_DATA_STATE_URL = 'http://localhost:8080/state/cumulative/';
-  CUMULATIVE_DATA_DISTRICT_URL = 'http://localhost:8080/district/cumulative/';
-  GET_USERNAME_URL = 'http://localhost:8080/get/name';
+  HOST_NAME = 'http://localhost:8080';
+  // aws host name
+  // HOST_NAME = 'http://13.233.94.220:8080';
+  AUTHENTICATION_URL = this.HOST_NAME + '/authenticate';
+  SIGNUP_URL = this.HOST_NAME + '/signup';
+  CHECK_AUTHENTICATION_URL = this.HOST_NAME + '/checkAuthentication';
+  AGGREGATED_DATA_ENTITY_URL = this.HOST_NAME + '/region_name/';
+  AGGREGATED_DATA_ALL_STATES_URL = this.HOST_NAME + '/region_type/state';
+  AGGREGATED_DATA_ALL_DISTRICTS_URL = this.HOST_NAME + '/region_type/';
+  CUMULATIVE_DATA_COUNTRY_URL = this.HOST_NAME + '/country/cumulative';
+  CUMULATIVE_DATA_STATE_URL = this.HOST_NAME + '/state/cumulative/';
+  CUMULATIVE_DATA_DISTRICT_URL = this.HOST_NAME + '/district/cumulative/';
+  GET_USERNAME_URL = this.HOST_NAME + '/get/name';
   constructor(private http: HttpClient) {
   }
 

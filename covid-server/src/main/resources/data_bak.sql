@@ -1,2 +1,0 @@
-INSERT INTO USERS (id, first_name, last_name, username, password) values (1 ,'shiva', 'singh', 'singhshiva1988@gmail.com', 'admin');
-INSERT INTO USERS (id, first_name, last_name, username, password) values (2, 'sahil', 'singla', 'sahilsingla112@gmail.com', 'admin');

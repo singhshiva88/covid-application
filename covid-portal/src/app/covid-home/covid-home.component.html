@@ -26,8 +26,8 @@
                             [hidden]="regionType !== 'DISTRICT'"
                             class="btn btn-primary btn-sm ml-2" style="cursor: pointer; text-decoration: underline">{{parentRegion}}</button>
                   </div>
-                  <div class="col-md-8 d-flex justify-content-around">
-                    <input type="text" pInputText size="50" placeholder="Search"
+                  <div class="col-md-8 d-flex justify-content-end">
+                    <input type="text" pInputText placeholder="Search"
                            [(ngModel)]="filterString"
                            (ngModelChange)="tt.filterGlobal(filterString, 'contains')"
                            style="border-radius: 8px;">

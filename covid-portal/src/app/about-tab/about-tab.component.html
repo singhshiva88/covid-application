@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-md-12  mt-4 d-flex justify-content-center">
+    <h4>Covid-19 Dashboard for India</h4>
+  </div>
+  <div class="col-md-12 d-flex justify-content-center">
+    <ul>
+      <li> This application has been created with Spring boot/Spring Cloud Infrastructure, and Angular 8.
+      </li>
+      <li> This application uses default server(Tomcat) embedded with Spring boot.
+      </li>
+      <li> Database used in this application is in-memory H2 database.
+      </li>
+      <li> Application uses URL "https://api.covid19india.org/districts_daily.json" to download latest Covid data
+      </li>
+      <li> A scheduler is setup to refresh the data every hour</li>
+      <li> User authentication is facilitated JWT token authentication, and token is stored in browser cookie[Token expires in 10 hours].
+      </li>
+      <li> All the urls access are secured with spring security.
+      </li>
+      <li>
+        This application is hosted on AWS EC2 instance.
+      </li>
+      <li> Source code is available on https://github.com/singhshiva88/covid-application
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-12 d-flex justify-content-center">
+    <h4> Features Included</h4>
+  </div>
+  <div class="col-md-12 d-flex justify-content-center">
+    <ul>
+      <li>
+        User signup/login
+      </li>
+      <li>
+        User can create account by SignUp button (Top Right Corner)
+      </li>
+      <li>
+        User can login with login button (Top Right Corner)
+      </li>
+      <li>
+        [sample user to login created by system :Username: user1, Password: pass1 and Username: user2, Password: pass2
+      </li>
+      <li>
+        Once user login, a new tab appears - "Covid Stats"
+      </li>
+      <li>
+        Covid Stats tab:
+      </li>
+      <li> Once user lands up to this screen for the first time, it shows Covid 19 Statistics for India.
+      </li>
+      <li>
+        This includes 5 sections:
+        <ul>
+          <li>
+            <p> Left half of the screen shows all the states of India with Total Confirmed, Active, Recovered, <br/>
+              and Deceased in respective states. [All the state names are clickable]<br/>
+              This table has search feature to filter states of your interest.
+            </p>
+          </li>
+          <li>
+            Right half of the screen shows four different Charts/Graphs.
+            <ul>
+              <li> First section shows Total number of cases.
+              </li>
+              <li> Second graph show the increamental changes starting from 22 March 2019.
+              </li>
+              <li> Third Bar chart (Stacked) shows top 15 states of India, with their active/recovered/deceased cases.
+              </li>
+              <li> Fourth Section shows percentage of contribution of each state to the National level.
+              </li>
+            </ul>
+          </li>
+          <li> Once user clicks on any state in left Table, Right side of the Charts/Graphs updates as per their data, <br/>
+            and same table refreshes with the districts of that state. (Districts are again clickable)
+          </li>
+          <li> This includes aggregated stats at state level, and cumulative chart, and all the information about its districts.
+          </li>
+          <li>
+            Further to this, user can again click to any districts, and see the similar stats for specific districts.
+          </li>
+          <li>User can always navigate to state lavel stats or national level stats by clicking on the links at top left Corner.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
