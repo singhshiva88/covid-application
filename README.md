@@ -1,4 +1,4 @@
-#Covid-19 Dashboard for India
+# Covid-19 Dashboard for India
 
 1. This application has been created with Spring boot/Spring Cloud Infrastructure, and Angular 8.
 2. This application uses default server(Tomcat) embeded with Spting boot.
@@ -10,8 +10,8 @@
 8. This application is hosted on AWS EC2 instance.
 9. Source code is available on https://github.com/singhshiva88/covid-application
 
-##Features included:
-###User signup/login 
+## Features included:
+### User signup/login 
 	1. User can create account by SignUp button (Top Right Corner)
 	2. User can login with login button (Top Right Corner) 
 	3. sample user to login created by system : 
@@ -19,9 +19,9 @@
 	5. Username: user2, Password: pass2
 	6. Once user login, a new tab appears - "Covid Stats"
 
-##Covid Stats tab:
+## Covid Stats tab:
 Once user lands up to this screen for the first time, it shows Covid 19 Statistics for India. 
-	####This includes 5 sections:
+	#### This includes 5 sections:
 		1. Left half of the screen shows all the states of India with 
 			Total Confirmed, Active, Recovered, and Deceased in respective states. [All the state names are clickable]
 			This table has search feature to filter states of your interest.
@@ -37,13 +37,13 @@ Once user lands up to this screen for the first time, it shows Covid 19 Statisti
 		4. Further to this, user can again click to any districts, and see the similar stats for any districts.
 		5. User can always navigate to state lavel stats or national level stats by clicking on the links at top left Corner.
 		
-##Installation steps for local machine:
-	###Steps for covid-server:
-	####Things to install:
+## Installation steps for local machine:
+	### Steps for covid-server:
+	### Things to install:
 		1. JDK 8+
 		2. node
 		3. npm
-	####Building both applications
+	### Building both applications
 	1. Extract covid-application:
 		This includes two folders:
 			a. covid-server [Spring boot application]
