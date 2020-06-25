@@ -22,7 +22,7 @@
 ## Covid Stats tab:
 Once user lands up to this screen for the first time, it shows Covid 19 Statistics for India. 
 
-	#### This includes 5 sections:
+## This includes 5 sections:
 	
 		1. Left half of the screen shows all the states of India with 
 			Total Confirmed, Active, Recovered, and Deceased in respective states. [All the state names are clickable]
@@ -42,12 +42,12 @@ Once user lands up to this screen for the first time, it shows Covid 19 Statisti
 		5. User can always navigate to state lavel stats or national level stats by clicking on the links at top left Corner.
 		
 ## Installation steps for local machine:
-	### Steps for covid-server:
-	### Things to install:
+###   Steps for covid-server:
+###     Things to install:
 		1. JDK 8+
 		2. node
 		3. npm
-	### Building both applications
+###     Building both applications
 	1. Extract covid-application:
 		This includes two folders:
 			a. covid-server [Spring boot application]
