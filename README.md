@@ -71,3 +71,10 @@ Once user lands up to this screen for the first time, it shows Covid 19 Statisti
 		open localhost:4200
 		Either use {user1, pass1} or {user2, pass2} to login 
 		Or register yourself aand see the Covid 19 stats.
+## Steps for improvement
+	1. Instead of refreshing full data base, we can incrementally update the database with incremental data. I coudn't find any service
+	which provides incremental data.
+	2. More information like Covid help centers can be provided.
+	3. Based on existing data size, and per day incremental data, in-memory H2 database can easily hold the data for 2 years.
+	4. We could use a nosql data to store pateint level data, which can be large in size.
+	5. A search service for patient data, and help center data can be implemented with Elastic Search.
