@@ -3,7 +3,8 @@
 1. This application has been created with Spring boot/Spring Cloud Infrastructure, and Angular 8.
 2. This application uses default server(Tomcat) embeded with Spting boot.
 3. Database used in this application is in-memory H2 database.
-4. Application uses URL "https://api.covid19india.org/districts_daily.json" to download latest Covid data
+4. Application uses URL "https://api.covid19india.org/districts_daily.json" to download latest Covid data, a fallback mechanism has been 
+provided to get the data from locally stored json file, in case of service fail/timeout.
 5. A scheduler is setup to refresh the data every hour
 6. User authentication is facilitated by JWT token authentication, and token is stored in browser cookie[Token expires in 10 hours].
 7. All the urls access are secured with spring security.
@@ -59,6 +60,7 @@ Once user lands up to this screen for the first time, it shows Covid 19 Statisti
 		-> run: mvn clean install
 		--> goto target folder 
 		--> run java -jar wander-covid19-app-1.0-SNAPSHOT.jar
+		--> Just after server start, it downloads the latest data from "https://api.covid19india.org/districts_daily.json"
 	
 	3. Steps for covid-portal:
 		-->Navigate to covid-portal through cmd
