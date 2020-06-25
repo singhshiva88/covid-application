@@ -5,19 +5,19 @@
 3. Database used in this application is in-memory H2 database.
 4. Application uses URL "https://api.covid19india.org/districts_daily.json" to download latest Covid data
 5. A scheduler is setup to refresh the data every hour
-6. User authentication is facilitated JWT token authentication, and token is stored in browser cookie[Token expires in 10 hours].
+6. User authentication is facilitated by JWT token authentication, and token is stored in browser cookie[Token expires in 10 hours].
 7. All the urls access are secured with spring security.
 8. This application is hosted on AWS EC2 instance.
 9. Source code is available on https://github.com/singhshiva88/covid-application
 
 ## Features included:
 ### User signup/login 
-	1. User can create account by SignUp button (Top Right Corner)
-	2. User can login with login button (Top Right Corner) 
-	3. sample user to login created by system : 
-	4. Username: user1, Password: pass1,
-	5. Username: user2, Password: pass2
-	6. Once user login, a new tab appears - "Covid Stats"
+	1. User can create account by SignUp button (Top Right Corner)  
+	2. User can login with login button (Top Right Corner)   
+	3. sample user to login created by system :   
+	4. Username: user1, Password: pass1,  
+	5. Username: user2, Password: pass2  
+	6. Once user login, a new tab appears - "Covid Stats"  
 
 ## Covid Stats tab:
 Once user lands up to this screen for the first time, it shows Covid 19 Statistics for India. 
