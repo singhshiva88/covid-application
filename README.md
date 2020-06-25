@@ -21,19 +21,23 @@
 
 ## Covid Stats tab:
 Once user lands up to this screen for the first time, it shows Covid 19 Statistics for India. 
+
 	#### This includes 5 sections:
+	
 		1. Left half of the screen shows all the states of India with 
 			Total Confirmed, Active, Recovered, and Deceased in respective states. [All the state names are clickable]
 			This table has search feature to filter states of your interest.
+			
 		2. Right half of the screen shows four different Charts/Graphs.
 			First section shows Total number of cases.
 			Second graph show the increamental changes starting from 22 March 2019.
 			Third Bar chart (Stacked) shows top 15 states of India, with their active/recovered/deceased cases.
-			Fourth Section shows percentage of contribution of each state to the National level. 
+			Fourth Section shows percentage of contribution of each state to the National level.  
+			
 		3. Once user clicks on any state in Table, Right side of the Charts/Graphs updates as per their data.
 			And table refreshes with the districts of that state. (Districts are again clickable)
 			This included agreegated stats at state level, and cumulative chart, and all the information about its districts.
-		
+			
 		4. Further to this, user can again click to any districts, and see the similar stats for any districts.
 		5. User can always navigate to state lavel stats or national level stats by clicking on the links at top left Corner.
 		
