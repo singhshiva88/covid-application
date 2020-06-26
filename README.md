@@ -1,4 +1,4 @@
-# Covid-19 Dashboard for India
+# Covid-19 Dashboard for India [http://ec2-3-7-224-124.ap-south-1.compute.amazonaws.com:8080/]
 
 1. This application has been created with Spring boot/Spring Cloud Infrastructure, and Angular 8.
 2. This application uses default server(Tomcat) embeded with Spting boot.
@@ -8,7 +8,7 @@ provided to get the data from locally stored json file, in case of service fail/
 5. A scheduler is setup to refresh the data every hour
 6. User authentication is facilitated by JWT token authentication, and token is stored in browser cookie[Token expires in 10 hours].
 7. All the urls access are secured with spring security.
-8. This application is hosted on AWS EC2 instance. [http://ec2-13-233-94-220.ap-south-1.compute.amazonaws.com:8080/]
+8. This application is hosted on AWS EC2 instance. [http://ec2-3-7-224-124.ap-south-1.compute.amazonaws.com:8080/]
 9. Source code is available on https://github.com/singhshiva88/covid-application
 
 ## Features included:
