@@ -29,6 +29,9 @@ public class Covid19indiaDownloader implements CovidDataDownloader
   CovidDataService covidDataService;
 
   @Autowired
+  CovidDataDownloader covidDataDownloader;
+
+  @Autowired
   private CovidDataParser covidDataParser;
   @Value("${covid.data.download.url}")
   private String downloadURL;

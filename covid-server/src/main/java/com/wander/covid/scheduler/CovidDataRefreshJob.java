@@ -4,6 +4,7 @@ import com.wander.covid.downloader.CovidDataDownloader;
 import com.wander.covid.service.CovidDataCleanService;
 import com.wander.covid.service.CovidDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
