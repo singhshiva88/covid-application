@@ -10,7 +10,7 @@ import {ConstantsModel} from '../util/constants-model';
 export class RestClientService {
   HOST_NAME = 'http://localhost:8080';
   // aws host name
-  // HOST_NAME = 'http://13.233.94.220:8080';
+  // HOST_NAME = 'http://3.7.224.124:8080';
   AUTHENTICATION_URL = this.HOST_NAME + '/authenticate';
   SIGNUP_URL = this.HOST_NAME + '/signup';
   CHECK_AUTHENTICATION_URL = this.HOST_NAME + '/checkAuthentication';

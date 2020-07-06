@@ -36,10 +36,11 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception
   {
+    // setting any request to permit all, since it is creating permission issues on AWS....
     httpSecurity.cors().configurationSource(corsConfigurationSource());
     httpSecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate", "/signup", "/load", "/h2-console/**")
             .permitAll().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-            .anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            .anyRequest().permitAll().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     httpSecurity.headers().frameOptions().sameOrigin();
   }
