@@ -8,4 +8,6 @@ import java.util.Map;
 public interface CovidDataDownloader
 {
   Map<String, List<CovidData>> loadData();
+
+  Object downloadFromOfflineJson();
 }
